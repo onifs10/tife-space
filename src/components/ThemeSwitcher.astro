@@ -1,0 +1,46 @@
+---
+// This component is used to switch between light and dark themes.
+---
+
+<div class="theme-switcher flex gap-2">
+  <button data-theme-btn="light" class="px-3 py-2 rounded border border-border bg-card text-foreground hover:bg-forground hover:text-background">
+    Light
+  </button>
+  <button data-theme-btn="dark" class="px-3 py-2 rounded border border-border bg-card text-foreground hover:bg-forground hover:text-background">
+    Dark
+  </button>
+  <button data-theme-btn="mirage" class="px-3 py-2 rounded border border-border bg-card text-foreground hover:bg-forground hover:text-background">
+    Mirage
+  </button>
+</div>
+
+<script>
+  import { getTheme, setTheme, type Theme } from '../utils/theme';
+
+  const buttons = document.querySelectorAll('[data-theme-btn]');
+  const currentTheme = getTheme();
+  
+  // Highlight active theme
+  buttons.forEach(btn => {
+    if (btn.getAttribute('data-theme-btn') === currentTheme) {
+      btn.classList.add('bg-forground', 'text-background');
+      btn.classList.remove('bg-card');
+    }
+  });
+  
+  // Handle clicks
+  buttons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const theme = btn.getAttribute('data-theme-btn') as Theme;
+      setTheme(theme);
+      
+      // Update active state
+      buttons.forEach(b => {
+        b.classList.remove('bg-forground', 'text-background');
+        b.classList.add('bg-card');
+      });
+      btn.classList.add('bg-forground', 'text-background');
+      btn.classList.remove('bg-card');
+    });
+  });
+</script>

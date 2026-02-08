@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ImageGallery from '../components/ImageGallery.astro';
+
+// Import all images from the gallery folder
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.{jpeg,jpg,png,webp}');
+
+// Process images and get metadata
+const galleryImages = await Promise.all(
+  Object.entries(images).map(async ([path, resolver]) => {
+    const image = await resolver();
+    const filename = path.split('/').pop()?.replace(/\.\w+$/, '') || '';
+    return {
+      src: image.default,
+      alt: filename.replace(/-/g, ' '),
+      title: filename.replace(/-/g, ' '),
+      path: path,
+    };
+  })
+);
+---
+
+<BaseLayout title="Gallery" description="My photography gallery">
+  <section class="py-20">
+    <h1 class="text-4xl font-bold mb-8 text-center">My Gallery</h1>
+    <ImageGallery images={galleryImages} columns={3} />
+  </section>
+</BaseLayout>

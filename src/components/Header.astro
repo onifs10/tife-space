@@ -1,0 +1,29 @@
+---
+import ThemeSwitcher from './ThemeSwitcher.astro';
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/gallery', label: 'Gallery' },
+];
+---
+
+<header class="bg-background text-foreground shadow">
+  <nav class="container mx-auto px-4 py-6">
+    <div class="flex justify-between items-center">
+      <a href="/" class="text-2xl font-bold">Tife :space:</a>
+      <div class="flex items-center gap-8">
+        <ul class="flex gap-6">
+          {navItems.map(item => (
+            <li>
+              <a href={item.href} class="hover:text-blue-400 transition">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <ThemeSwitcher />
+      </div>
+    </div>
+  </nav>
+</header>

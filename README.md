@@ -1,22 +1,20 @@
-# Astro Starter Kit: Minimal
+# Tife space - A personal blog built with Astro
 
 ```sh
 npm create astro@latest -- --template minimal
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
 ## 🚀 Project Structure
 
-Inside of your Astro project, you'll see the following folders and files:
+Inside this Astro project, you'll see the following folders and files:
 
 ```text
-/
 ├── public/
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── components/
+│   ├── layouts/
+│   ├── pages/
+├── package.json
 ```
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.

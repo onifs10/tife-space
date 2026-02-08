@@ -1,0 +1,39 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Font } from "astro:assets";
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Tife's space"} = Astro.props as Props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <!--Prevent flashing of  unstyled content-->
+    <script is:inline>
+      const theme = localStorage.getItem('ayu-theme') || 
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    </script>
+    <Font cssVariable="--font-fira-code" preload />
+    <Font cssVariable="--font-mono" preload />
+    <Font cssVariable="--font-sans" preload />
+  </head>
+  <body class="min-h-screen flex flex-col bg-background text-foreground">
+    <Header />
+    <main class="flex-grow container mx-auto px-4 py-8">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

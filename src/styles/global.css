@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+/* Light theme (default) */
+@theme {
+  --color-background: #f8f9fa;
+  --color-foreground: #8a9199;
+  --color-primary: #55b4d4;
+  --color-secondary: #f2ae49;
+  --color-accent: #399ee6;
+  --color-muted: #8a9199;
+  --color-border: #e7e8e9;
+  --color-card: #f3f4f5;
+  --color-error: #e65050;
+  --color-warning: #ffaa33;
+  --color-success: #6cbf43;
+}
+
+/* Dark theme */
+@layer theme {
+  :root[data-theme="dark"] {
+    --color-background: #0b0e14;
+    --color-foreground: #bfbdb6;
+    --color-primary: #39bae6;
+    --color-secondary: #ffb454;
+    --color-accent: #59c2ff;
+    --color-muted: #565b66;
+    --color-border: #1b2733;
+    --color-card: #0f131a;
+    --color-error: #d95757;
+    --color-warning: #e6b450;
+    --color-success: #7fd962;
+  }
+
+  /* Mirage theme */
+  :root[data-theme="mirage"] {
+    --color-background: #1f2430;
+    --color-foreground: #cbccc6;
+    --color-primary: #5ccfe6;
+    --color-secondary: #ffc44c;
+    --color-accent: #73d0ff;
+    --color-muted: #707a8c;
+    --color-border: #33415e;
+    --color-card: #232834;
+    --color-error: #f28779;
+    --color-warning: #ffc44c;
+    --color-success: #bae67e;
+  }
+}
+
+body {
+  font-family:
+    var(--font-fira-code), var(--font-sans), var(--font-mono), monospace;
+  font-size: 0.8rem;
+}
+

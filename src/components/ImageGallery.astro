@@ -1,0 +1,49 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  images: {
+    src: ImageMetadata;
+    alt: string;
+    title?: string;
+  }[];
+  columns?: 2 | 3 | 4;
+}
+
+const { images, columns = 3 } = Astro.props;
+
+const gridClasses = {
+  2: 'md:grid-cols-2',
+  3: 'md:grid-cols-2 lg:grid-cols-3',
+  4: 'md:grid-cols-2 lg:grid-cols-4',
+};
+---
+
+<div class={`gallery grid grid-cols-1 ${gridClasses[columns]} gap-6`}>
+  {images.map((img, index) => (
+    <div class="gallery-item group relative overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 cursor-pointer">
+      <Image
+        src={img.src}
+        alt={img.alt}
+        width={img.src.width}
+        height={img.src.height}
+        class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        loading={index < 6 ? "eager" : "lazy"}
+      />
+      {img.title && (
+        <div class="absolute inset-0 bg-linear-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+          <p class="text-white p-4 font-medium">
+            {img.title}
+          </p>
+        </div>
+      )}
+    </div>
+  ))}
+</div>
+
+<style>
+  .gallery-item {
+    aspect-ratio: 3/2;
+  }
+</style>
