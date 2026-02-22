@@ -5,11 +5,11 @@ date: 2026-02-08
 tags: ["web", "astro"]
 ---
 
-# Welcome to my blog!
+## Welcome to my space
 
 This is my first post on my new Astro-powered portfolio site.
 
-## What I'll be writing about
+### What I'll be writing about
 
 I'll be sharing thoughts on:
 

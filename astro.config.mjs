@@ -10,17 +10,12 @@ import sitemap from "@astrojs/sitemap";
 
 import pagefind from "astro-pagefind";
 
-// https://astro.build/config
 export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-
   integrations: [mdx(), icon(), sitemap(), pagefind()],
-
-  // TODO: add site config for domain
-  // site: 'https://www.yourdomain.com'
-  //
+  site: "https://tife.me/",
   experimental: {
     fonts: [
       {
@@ -46,4 +41,3 @@ export default defineConfig({
     ],
   },
 });
-

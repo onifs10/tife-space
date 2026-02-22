@@ -1,19 +1,35 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import {ArrowRight} from '@lucide/astro';
 ---
 <BaseLayout title="Base - Tife's Space">
-  <section class="text-center py-20">
-    <h1 class="text-5xl font-bold mb-4">Hi, I'm Your Name</h1>
-    <p class="text-xl text-gray-600 mb-8">
-      Software engineer, Writer, Photographer
-    </p>
-    <div class="flex gap-4 justify-center">
-      <a href="/blog" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700">
-        Read My Blog
-      </a>
-      <a href="/gallery" class="border border-blue-600 text-blue-600 px-6 py-3 rounded-lg hover:bg-blue-50">
-        View Gallery
-      </a>
+  <section class="max-w-5xl mx-auto px-6 py-20">
+    <div class="max-w-3xl">
+      <h1 class="text-4xl md:text-5xl tracking-tight mb-6">
+        Senior Software Engineer
+      </h1>
+      <p class="text-[1.0rem] text-gray-600 mb-8 leading-relaxed">
+      I'm Tife, a Senior Software Engineer with a passion for building across the full spectrum of software — from pixel-perfect web experiences to high-performance real-time systems. 
+      With expertise spanning <span class="text-gray-900 font-bold"> JS, TS, PHP, C++, Rust, and Python</span>. 
+      I'm equally comfortable crafting responsive frontends as I am optimizing low-latency back-end systems where every millisecond counts.
+      When I'm not coding, I enjoy watching movies and cycling.
+      </p>
+      <div class="flex gap-4 flex-wrap mb-16">
+        <a href="/blog" class="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors">
+          Read My Blog
+          <ArrowRight size={18} />
+        </a>
+        <a href="/gallery" class="inline-flex items-center border gap-2 px-6 py-3 border-gray-300 rounded-md hover:border-gray-400 transition-colors">
+          View Gallery
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 pt-12 border-t border-gray-200">
+        <div>
+          <div class="text-4xl mb-2">5+</div>
+          <div class="text-sm text-gray-600">Years Experience</div>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
