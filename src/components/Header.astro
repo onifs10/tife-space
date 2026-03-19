@@ -10,6 +10,8 @@ const isActive = (href: string) => {
   return Astro.url.pathname === href;
 };
 
+const name = "Tife Onifade";
+
 
 ---
 <script>
@@ -22,14 +24,22 @@ mobileMenuBtn?.addEventListener('click', () => {
   menuIcon?.classList.toggle('hidden');
   closeIcon?.classList.toggle('hidden');
 })
+
+import { glitch_animation } from '../utils/animations';
+glitch_animation(
+  '#main-text',
+);
+
 </script>
 
 <header class="text-foreground shadow">
   <nav class="container mx-auto max-w-5xl px-6 py-6">
-    <div class="flex justify-between items-center">
-      <a href="/" class="text-xl tracking-tight">
-        Tife Onifade
-      </a>
+    <div class="flex items-center">
+          <a class="flex-1 tracking-tight text-xl font-bold w-auto h-6" href="/"> 
+            <span id="main-text" class="">
+              {name}
+            </span>
+          </a>
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
         <ul class="flex gap-6">

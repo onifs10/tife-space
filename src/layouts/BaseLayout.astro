@@ -34,11 +34,92 @@ const { title, description = "Tife's space"} = Astro.props as Props;
     <Font cssVariable="--font-mono" preload />
     <Font cssVariable="--font-sans" preload />
   </head>
-  <body class="min-h-screen flex flex-col">
-    <Header />
-    <main class="flex-1">
-      <slot />
-    </main>
-    <Footer />
+  <body class="relative  bg-amber-50">
+    
+    <div id="bg-animation" class="fixed inset-0 z-1000 pointer-events-none">
+      <div id="morph-box" class="absolute w-3.5 h-3.5 top-1 left-1 rounded-full bg-orange-600"></div>
+    </div>
+    <div class="min-h-screen flex flex-col overflow-x-hidden relative">
+      <Header />
+      <main class="flex-1">
+        <slot />
+      </main>
+      <Footer />
+    </div>
+    <script>
+      import { gsap } from 'gsap';
+import { Observer } from "gsap/Observer";
+      gsap.registerPlugin(Observer);
+
+      document.addEventListener('DOMContentLoaded', () => {
+        Observer.create({
+          target: window,
+          type: "pointer",
+          onMove: (self) => {
+            if (self.x !== undefined && self.y !== undefined) {
+              gsap.to("#morph-box", {
+                // put the box at the pointer position, but with a smooth animation
+                x: self.x - 6, // center the box on the pointer
+                y: self.y - 6, // center the box on the pointer
+                duration: 0.2,
+                ease: "elastic.out(1, 0.5)",
+                onStart: (_) => {
+                  gsap.set("#morph-box", {
+                    opacity: 1,
+                  });
+                },
+                onComplete: (_) => {
+                  gsap.to("#morph-box", {
+                    opacity: 0.5,
+                    duration: 0.2,
+                    ease: "power1.inOut",
+                    onComplete: () => {
+                      gsap.set("#morph-box", { opacity: 0.5 });
+                    },
+                  });
+                },
+              });
+            }
+          },
+          onClick: (_) => {
+            gsap.to("#morph-box", {
+              scale: 1.5,
+              duration: 0.2,
+              ease: "power1.inOut",
+              onStart: () => {
+                gsap.set("#morph-box", {
+                  opacity: 1,
+                });
+              },
+              onComplete: () => {
+                gsap.to("#morph-box", {
+                  scale: 1,
+                  duration: 0.2,
+                  ease: "power1.inOut",
+                  onComplete: () => {
+                    gsap.set("#morph-box", { opacity: 0.5 });
+                  },
+                });
+              },
+            });
+          },
+          onStop: (_) => {
+            gsap.to("#morph-box", {
+              scale: 1,
+              duration: 0.2,
+              ease: "power1.inOut",
+            });
+            gsap.to("#morph-box", {
+              opacity: 0.5,
+              duration: 0.2,
+              ease: "power1.inOut",
+              onComplete: () => {
+                gsap.set("#morph-box", { opacity: 0.5 });
+              },
+            });
+          },
+        });
+      });
+    </script>
   </body>
 </html>
