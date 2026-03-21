@@ -1,6 +1,6 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
 import ImageGallery from '../components/ImageGallery.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 // Import all images from the gallery folder
 const images = import.meta.glob<{ default: ImageMetadata }>('../assets/gallery/*.{jpeg,jpg,png,webp}');

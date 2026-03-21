@@ -1,19 +1,19 @@
 ---
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 import { Font } from "astro:assets";
-import { SEO } from 'astro-seo';
-import '../styles/global.css';
+import { SEO } from "astro-seo";
+import "../styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = "Tife's space"} = Astro.props as Props;
+const { title, description = "Tife's space" } = Astro.props as Props;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <SEO
@@ -24,7 +24,7 @@ const { title, description = "Tife's space"} = Astro.props as Props;
           title: "Tife Onifade | " + title,
           type: "website",
           image: "/og-image.jpg",
-        }
+        },
       }}
       twitter={{ creator: "BasitOnifade" }}
     />
@@ -34,10 +34,13 @@ const { title, description = "Tife's space"} = Astro.props as Props;
     <Font cssVariable="--font-mono" preload />
     <Font cssVariable="--font-sans" preload />
   </head>
-  <body class="relative  bg-amber-50">
-    
+  <body class="relative bg-amber-50">
     <div id="bg-animation" class="fixed inset-0 z-1000 pointer-events-none">
-      <div id="morph-box" class="absolute w-3.5 h-3.5 top-1 left-1 rounded-full bg-orange-600"></div>
+      <div
+        id="morph-box"
+        class="absolute w-3.5 h-3.5 top-1 left-1 rounded-full bg-orange-600"
+      >
+      </div>
     </div>
     <div class="min-h-screen flex flex-col overflow-x-hidden relative">
       <Header />
@@ -47,11 +50,11 @@ const { title, description = "Tife's space"} = Astro.props as Props;
       <Footer />
     </div>
     <script>
-      import { gsap } from 'gsap';
-import { Observer } from "gsap/Observer";
+      import { gsap } from "gsap";
+      import { Observer } from "gsap/Observer";
       gsap.registerPlugin(Observer);
 
-      document.addEventListener('DOMContentLoaded', () => {
+      document.addEventListener("DOMContentLoaded", () => {
         Observer.create({
           target: window,
           type: "pointer",

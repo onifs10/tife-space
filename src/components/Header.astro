@@ -1,9 +1,9 @@
 ---
-import {Menu, X} from '@lucide/astro';
+import { Menu, X } from "@lucide/astro";
 const navItems = [
-  { href: '/', label: 'Home' },
-  { href: '/blog', label: 'Blog' },
-  { href: '/gallery', label: 'Gallery' },
+  { href: "/", label: "Home" },
+  { href: "/blog", label: "Blog" },
+  { href: "/gallery", label: "Gallery" },
 ];
 
 const isActive = (href: string) => {
@@ -11,47 +11,47 @@ const isActive = (href: string) => {
 };
 
 const name = "Tife Onifade";
-
-
 ---
+
 <script>
-const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-const mobileMenu = document.getElementById('mobile-menu');
-const menuIcon = document.getElementById('menu-icon');
-const closeIcon = document.getElementById('close-icon');
-mobileMenuBtn?.addEventListener('click', () => {
-  mobileMenu?.classList.toggle('hidden');
-  menuIcon?.classList.toggle('hidden');
-  closeIcon?.classList.toggle('hidden');
-})
+  const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+  mobileMenuBtn?.addEventListener("click", () => {
+    mobileMenu?.classList.toggle("hidden");
+    menuIcon?.classList.toggle("hidden");
+    closeIcon?.classList.toggle("hidden");
+  });
 
-import { glitch_animation } from '../utils/animations';
-glitch_animation(
-  '#main-text',
-);
-
+  import { glitch_animation } from "../utils/animations";
+  glitch_animation("#main-text");
 </script>
 
 <header class="text-foreground shadow">
   <nav class="container mx-auto max-w-5xl px-6 py-6">
     <div class="flex items-center">
-          <a class="flex-1 tracking-tight text-xl font-bold w-auto h-6" href="/"> 
-            <span id="main-text" class="">
-              {name}
-            </span>
-          </a>
+      <a class="flex-1 tracking-tight text-xl font-bold w-auto h-6" href="/">
+        <span id="main-text" class="">
+          {name}
+        </span>
+      </a>
       <!-- Desktop Navigation -->
       <div class="hidden md:flex items-center gap-8">
         <ul class="flex gap-6">
           {
-            navItems.map(item => (
+            navItems.map((item) => (
               <li>
-                <a href={item.href} 
+                <a
+                  href={item.href}
                   class={`text-sm tracking-wide 
                         transition-colors duration-200 ease-in-out
-                        ${isActive(item.href) ?
-                          'text-gray-900' : 
-                          'text-gray-500 hover:text-gray-900'}`}>
+                        ${
+                          isActive(item.href)
+                            ? "text-gray-900"
+                            : "text-gray-500 hover:text-gray-900"
+                        }`}
+                >
                   {item.label}
                 </a>
               </li>
@@ -62,20 +62,24 @@ glitch_animation(
 
       <!-- Mobile Navigation -->
       <button id="mobile-menu-btn" class="md:hidden focus:outline-none">
-        <Menu size={24} id="menu-icon"/>
-        <X size={24} id="close-icon" class="hidden"/>
+        <Menu size={24} id="menu-icon" />
+        <X size={24} id="close-icon" class="hidden" />
       </button>
     </div>
     <ul class="hidden mt-6 pb-2 space-y-4" id="mobile-menu">
       {
-        navItems.map(item => (
+        navItems.map((item) => (
           <li>
-            <a href={item.href} 
+            <a
+              href={item.href}
               class={`block text-sm tracking-wide 
                     transition-colors duration-200 ease-in-out
-                    ${isActive(item.href) ?
-                      'text-gray-900' : 
-                      'text-gray-500 hover:text-gray-900'}`}>
+                    ${
+                      isActive(item.href)
+                        ? "text-gray-900"
+                        : "text-gray-500 hover:text-gray-900"
+                    }`}
+            >
               {item.label}
             </a>
           </li>

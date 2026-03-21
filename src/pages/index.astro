@@ -1,12 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import {ArrowRight} from '@lucide/astro';
+import { ArrowRight } from "@lucide/astro";
 ---
+
 <script>
-  import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { TextPlugin } from 'gsap/TextPlugin';
-  gsap.registerPlugin(TextPlugin)
+  import { gsap } from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { TextPlugin } from "gsap/TextPlugin";
+  gsap.registerPlugin(TextPlugin);
   gsap.registerPlugin(ScrollTrigger);
   let tl = gsap.timeline();
   tl.from("#role", {
@@ -16,46 +17,64 @@ import { TextPlugin } from 'gsap/TextPlugin';
     ease: "power1.inOut",
   });
 
-  tl.from(".highlights", {
-    opacity: 0,
-    y: 20,
-    duration: 0.2,
-    ease: "power1.inOut",
-    stagger: 0.2,
-    scrollTrigger: {
-      trigger: "#work_experience",
-      start: "top 80%",
+  tl.from(
+    ".highlights",
+    {
+      opacity: 0,
+      y: 20,
+      duration: 0.2,
+      ease: "power1.inOut",
+      stagger: 0.2,
+      scrollTrigger: {
+        trigger: "#work_experience",
+        start: "top 80%",
+      },
     },
-  }, "-=0.5");
-
+    "-=0.5",
+  );
 </script>
 
-
-<BaseLayout title="Senior Software Engineer" 
-  description="Welcome to my personal website! I'm Tife, a Senior Software Engineer with a passion for building across the full spectrum of software — from pixel-perfect web experiences to high-performance real-time systems. With expertise spanning JS, TS, PHP, C++, Rust, and Python. I'm equally comfortable crafting responsive frontends as I am optimizing low-latency back-end systems where every millisecond counts. When I'm not coding, I enjoy watching movies and cycling.">
+<BaseLayout
+  title="Senior Software Engineer"
+  description="Welcome to my personal website! I'm Tife, a Senior Software Engineer with a passion for building across the full spectrum of software — from pixel-perfect web experiences to high-performance real-time systems. With expertise spanning JS, TS, PHP, C++, Rust, and Python. I'm equally comfortable crafting responsive frontends as I am optimizing low-latency back-end systems where every millisecond counts. When I'm not coding, I enjoy watching movies and cycling."
+>
   <section class="max-w-5xl mx-auto px-6 py-20">
     <div class="max-w-3xl">
       <h1 id="role" class="text-4xl md:text-5xl tracking-tight mb-6">
         Software Engineer
       </h1>
       <p class="text-[1.0rem] text-gray-600 mb-8 leading-relaxed">
-      I'm Tife, a Senior Software Engineer with a passion for building across the full spectrum of software — from pixel-perfect web experiences to high-performance real-time systems. 
-      With expertise spanning <span id="skills" class="text-orange-600 font-bold"> JS, TS, PHP, C++, Rust, and Python</span>. 
-      I'm equally comfortable crafting responsive frontends as I am optimizing low-latency back-end systems where every millisecond counts.
-      When I'm not coding, I enjoy watching movies and cycling.
+        I'm Tife, a Senior Software Engineer with a passion for building across
+        the full spectrum of software — from pixel-perfect web experiences to
+        high-performance real-time systems. With expertise spanning <span
+          id="skills"
+          class="text-orange-600 font-bold"
+        >
+          JS, TS, PHP, C++, Rust, and Python</span
+        >. I'm equally comfortable crafting responsive frontends as I am
+        optimizing low-latency back-end systems where every millisecond counts.
+        When I'm not coding, I enjoy watching movies and cycling.
       </p>
       <div class="flex gap-4 flex-wrap mb-16">
-        <a href="/blog" class="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors">
+        <a
+          href="/blog"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 text-white rounded-md hover:bg-gray-800 transition-colors"
+        >
           Read My Blog
           <ArrowRight size={18} />
         </a>
-        <a href="/gallery" class="inline-flex items-center border gap-2 px-6 py-3 border-gray-300 rounded-md hover:border-gray-400 transition-colors">
+        <a
+          href="/gallery"
+          class="inline-flex items-center border gap-2 px-6 py-3 border-gray-300 rounded-md hover:border-gray-400 transition-colors"
+        >
           View Gallery
         </a>
       </div>
-      
+
       <!-- Stats Section -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 py-12 border-t border-gray-200">
+      <div
+        class="grid grid-cols-1 md:grid-cols-3 gap-12 py-12 border-t border-gray-200"
+      >
         <div>
           <div class="text-4xl mb-2">5+</div>
           <div class="text-sm text-gray-600">Years Experience</div>
@@ -74,9 +93,16 @@ import { TextPlugin } from 'gsap/TextPlugin';
             <p class="text-sm text-orange-600 mb-2">Sep 2023 - Present</p>
             <ul class="list-disc list-inside text-gray-700">
               <li>
-                Designing and managing a <span class="highlights text-orange-600 font-bold">real-time news notification system</span> for
-                the Bloomberg Terminal, leveraging <span class="highlights text-orange-600 font-bold">Kafka</span> middleware for efficient
-                data streaming, and utilizing <span class="highlights text-orange-600 font-bold">C++</span> and <span class="highlights text-orange-600 font-bold">Python</span> as primary programming languages.
+                Designing and managing a <span
+                  class="highlights text-orange-600 font-bold"
+                  >real-time news notification system</span
+                > for the Bloomberg Terminal, leveraging <span
+                  class="highlights text-orange-600 font-bold">Kafka</span
+                > middleware for efficient data streaming, and utilizing <span
+                  class="highlights text-orange-600 font-bold">C++</span
+                > and <span class="highlights text-orange-600 font-bold"
+                  >Python</span
+                > as primary programming languages.
               </li>
               <li>
                 Contributed to scalable deployment of multi-document news
@@ -84,29 +110,43 @@ import { TextPlugin } from 'gsap/TextPlugin';
                 mechanism, reducing latency and enhancing user engagement
               </li>
               <li>
-                Developed a scalable analytics pipeline using <span class="highlights text-orange-600 font-bold">Python</span> and <span class="highlights text-orange-600 font-bold">Apache Spark</span> for stream processing of subscription events, supporting near
-                real-time insights and reporting
+                Developed a scalable analytics pipeline using <span
+                  class="highlights text-orange-600 font-bold">Python</span
+                > and <span class="highlights text-orange-600 font-bold"
+                  >Apache Spark</span
+                > for stream processing of subscription events, supporting near real-time
+                insights and reporting
               </li>
             </ul>
           </div>
           <div>
             <h3 class="text-xl font-semibold">Meta</h3>
-            <h4 class="text-md font-medium text-gray-700">Frontend Engineer Intern</h4>
+            <h4 class="text-md font-medium text-gray-700">
+              Frontend Engineer Intern
+            </h4>
             <p class="text-sm text-orange-600 mb-2">May 2022 - July 2022</p>
             <ul class="list-disc list-inside text-gray-700">
               <li>
-                I added new features to the shift management product for frontline workers on the workplace platform
+                I added new features to the shift management product for
+                frontline workers on the workplace platform
               </li>
               <li>
-                Built and integrated an API for adding more information about shifts for frontline workers using <span class="highlights text-orange-600 font-bold">Hack</span>
+                Built and integrated an API for adding more information about
+                shifts for frontline workers using <span
+                  class="highlights text-orange-600 font-bold">Hack</span
+                >
               </li>
               <li>
-                Built UI to add information and view information about shifts in multiple scenarios using <span class="highlights text-orange-600 font-bold">Reactjs</span>.
+                Built UI to add information and view information about shifts in
+                multiple scenarios using <span
+                  class="highlights text-orange-600 font-bold">Reactjs</span
+                >.
               </li>
             </ul>
           </div>
           <!-- Add more work experiences as needed -->
         </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
