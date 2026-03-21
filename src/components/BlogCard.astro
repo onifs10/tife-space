@@ -4,34 +4,32 @@ interface Props {
   description: string;
   date: Date;
   slug: string;
-  image?: string;
+  tags?: string[];
 }
 
-const { title, description, date, slug, image } = Astro.props;
+const { title, description, date, slug, tags } = Astro.props;
 ---
 
-<article
-  class="border rounded overflow-hidden transition border-gray-300 hover:border-gray-500"
+<a
+  href={`/blog/${slug}`}
+  class="group/card w-auto pb-2 border-b border-orange-300 block"
 >
-  {image && <img src={image} alt={title} class="w-full h-48 object-cover" />}
-  <div class="p-6">
-    <time class="text-sm text-gray-600">
-      {
-        date.toLocaleDateString("en-US", {
-          year: "numeric",
-          month: "long",
-          day: "numeric",
-        })
-      }
-    </time>
-    <h3 class="text-xl font-bold mt-2 mb-3">
-      <a
-        href={`/blog/${slug}`}
-        class="text-gray-500 hover:text-gray-900 transition-colors"
-      >
-        {title}
-      </a>
-    </h3>
-    <p class="text-gray-700">{description}</p>
-  </div>
-</article>
+  <time class="text-sm text-orange-500">
+    {
+      date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      })
+    }
+  </time>
+  <h3
+    class="w-auto text-xl font-bold mt-2 mb-3
+    group-hover/card:text-orange-500 text-gray-900 transition-colors"
+  >
+    {title}
+  </h3>
+  <p class="text-gray-600 w-auto text-ellipsis">
+    {description}
+  </p>
+</a>
