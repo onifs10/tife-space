@@ -49,14 +49,16 @@ const name = "Tife Onifade";
   });
 
   import { glitch_animation } from "../utils/animations";
-  glitch_animation("#main-text");
+  document.addEventListener("DOMContentLoaded", () => {
+    glitch_animation("#main-text");
+  });
 </script>
 
 <header class="shadow relative">
   <nav class="container mx-auto max-w-5xl px-6 py-6 relative">
-    <div class="flex items-center">
+    <div class="flex items-center justify-between">
       <a
-        class="flex-1 tracking-tight text-xl font-bold w-auto h-6 hover:text-orange-600 transition-colors"
+        class="tracking-tight text-xl font-bold w-auto hover:text-orange-600 transition-colors"
         href="/"
       >
         <span id="main-text" class="">

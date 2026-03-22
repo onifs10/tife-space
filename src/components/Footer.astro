@@ -1,5 +1,7 @@
 ---
-import { Github, Linkedin, Mail } from "@lucide/astro";
+import { Mail } from "@lucide/astro";
+import Github from "./icons/Github.astro";
+import LinkedIn from "./icons/LinkedIn.astro";
 const date = new Date();
 ---
 
@@ -15,26 +17,26 @@ const date = new Date();
           href="https://github.com/onifs10"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-gray-500 hover:text-gray-900 transition-colors"
+          class="text-gray-500 hover:text-orange-600 transition-colors"
           aria-label="GitHub"
         >
-          <Github size={20} />
+          <Github size={24} />
         </a>
         <a
           href="https://linkedin.com/in/onifade-boluwatife"
           target="_blank"
           rel="noopener noreferrer"
-          class="text-gray-500 hover:text-gray-900 transition-colors"
+          class="text-gray-500 hover:text-orange-600 transition-colors"
           aria-label="LinkedIn"
         >
-          <Linkedin size={20} />
+          <LinkedIn size={24} />
         </a>
         <a
           href="mailto:onifadebolu64@gmail.com"
-          class="text-gray-500 hover:text-gray-900 transition-colors"
+          class="text-gray-500 hover:text-orange-600 transition-colors"
           aria-label="Email"
         >
-          <Mail size={20} />
+          <Mail size={24} />
         </a>
       </div>
     </div>

@@ -5,37 +5,6 @@ import image_me from "../assets/images/me.jpg";
 import { Image } from "astro:assets";
 ---
 
-<script>
-  import { gsap } from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  import { TextPlugin } from "gsap/TextPlugin";
-  gsap.registerPlugin(TextPlugin);
-  gsap.registerPlugin(ScrollTrigger);
-  let tl = gsap.timeline();
-  tl.from("#role", {
-    opacity: 0,
-    y: 20,
-    duration: 1,
-    ease: "power1.inOut",
-  });
-
-  tl.from(
-    ".highlights",
-    {
-      opacity: 0,
-      y: 20,
-      duration: 0.2,
-      ease: "power1.inOut",
-      stagger: 0.2,
-      scrollTrigger: {
-        trigger: "#work_experience",
-        start: "top 80%",
-      },
-    },
-    "-=0.5",
-  );
-</script>
-
 <BaseLayout
   title="Senior Software Engineer"
   description="Welcome to my personal website! I'm Tife, a Senior Software Engineer with a passion for building across the full spectrum of software"
@@ -53,7 +22,7 @@ import { Image } from "astro:assets";
           experiences to high-performance real-time systems. With expertise
           spanning <span id="skills" class="text-orange-600 font-bold">
             JS, TS, PHP, C++, Rust, and Python</span
-          >. I'm equally comfortable crafting responsive frontends as I am
+          >. I'm equally comfortable crafting responsive frontend as I am
           optimizing low-latency back-end systems where every millisecond
           counts. When I'm not coding, I enjoy watching movies and cycling.
         </p>
@@ -76,8 +45,12 @@ import { Image } from "astro:assets";
           </a>
         </div>
       </div>
-      <div class="rounded overflow-hidden max-w-75 hidden md:block">
-        <Image src={image_me} alt="Tife's profile picture" />
+      <div id="me-img" class="rounded overflow-hidden max-w-75 hidden md:block">
+        <Image
+          src={image_me}
+          alt="Tife's profile picture"
+          style="filter: hue-rotate(-20deg)"
+        />
       </div>
     </div>
     <!-- Stats Section -->
@@ -158,3 +131,72 @@ import { Image } from "astro:assets";
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  import { gsap } from "gsap";
+  import { Observer } from "gsap/Observer";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  import { TextPlugin } from "gsap/TextPlugin";
+  gsap.registerPlugin(TextPlugin);
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.registerPlugin(Observer);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let tl = gsap.timeline();
+    tl.from("#role", {
+      opacity: 0,
+      y: 20,
+      duration: 1,
+      ease: "power1.inOut",
+    });
+
+    tl.from(
+      ".highlights",
+      {
+        opacity: 0,
+        y: 20,
+        duration: 0.2,
+        ease: "power1.inOut",
+        stagger: 0.2,
+        scrollTrigger: {
+          trigger: "#work_experience",
+          start: "top 80%",
+        },
+      },
+      "-=0.5",
+    );
+
+    Observer.create({
+      target: "#me-img",
+      onHover: (self) => {
+        console.log("hovering");
+        gsap.to("#me-img", {
+          scale: 1.05,
+          duration: 0.3,
+          rotate: "5deg",
+          borderRadius: "20px",
+          ease: "power1.inOut",
+        });
+        gsap.to("#me-img>img", {
+          filter: "hue-rotate(0deg)",
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+      },
+      onHoverEnd: (self) => {
+        gsap.to("#me-img", {
+          scale: 1,
+          duration: 0.3,
+          rotate: "0deg",
+          borderRadius: "4px",
+          ease: "power1.inOut",
+        });
+        gsap.to("#me-img>img", {
+          filter: "hue-rotate(-20deg)",
+          duration: 0.3,
+          ease: "power1.inOut",
+        });
+      },
+    });
+  });
+</script>
