@@ -1,5 +1,6 @@
 ---
-
+import BirdSvg from "./svgs/BirdSvg.astro";
+import CloudBackgroundSvg from "./svgs/CloudBackgroundSvg.astro";
 ---
 
 <script>
@@ -7,8 +8,16 @@
   glitch_animation("#coming-soon_text");
 </script>
 
-<div
-  class="w-screen h-screen flex items-center justify-center text-gray-700 font-bold text-[clamp(1rem,3vw,3rem)] tracking-tight"
->
-  <h1 id="coming-soon_text">Coming Soon ...</h1>
+<div class="size-full flex items-center justify-center flex-col gap-4 flex-1">
+  <div class="relative">
+    <CloudBackgroundSvg />
+    <div class="absolute inset-0 flex items-center justify-center">
+      <BirdSvg />
+    </div>
+  </div>
+  <div
+    class="text-gray-700 font-bold text-[clamp(1rem,3vw,3rem)] tracking-tight"
+  >
+    <h1 id="coming-soon_text">Coming Soon ...</h1>
+  </div>
 </div>
